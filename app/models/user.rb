@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
   attr_accessible :role
 
   has_many :posts
+
+	#ROLES = %w[member mentor admin]
+
+	def mentor?
+		return true if self.role == 'mentor'
+		false
+	end
 end
+

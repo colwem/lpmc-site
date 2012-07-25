@@ -6,8 +6,9 @@ gem 'heroku'
 gem 'thin'
 gem 'omniauth-google'
 
+gem "cancan"
 gem 'devise'
-
+gem 'pry-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -38,7 +39,7 @@ end
 gem 'jquery-rails'
 
 group :test do
-  gem  'capybara', '1.1.2'
+  gem 'capybara', '1.1.2'
   gem 'database_cleaner'
 end
 
