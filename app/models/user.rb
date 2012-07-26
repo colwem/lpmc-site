@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -11,11 +11,17 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
-	#ROLES = %w[member mentor admin]
+  #ROLES = %w[member mentor admin]
 
-	def mentor?
-		return true if self.role == 'mentor'
-		false
-	end
+  def mentor?
+    return true if self.role == 'mentor'
+    false
+  end
+
+  def admin?
+    return true if self.role == 'admin' 
+    false
+  end
+  
 end
 

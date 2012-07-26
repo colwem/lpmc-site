@@ -11,24 +11,25 @@
     <th></th>
   </tr>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.name %></td>
-    <td><%= post.title %></td>
-    <td><%= post.content %></td>
-    <td><%= post.user_id %></td>
-    <% if can? :manage, @post %>
-	<%binding.pry%>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>
-  </tr>
-<% end %>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.name %></td>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= post.user_id %></td>
+      <% if can?( :read, post) %>
+        <td><%= link_to 'Show', post %></td>
+      <% end %>
+      <% if can? :update, post %>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>
 
 <br />
 
-<% if can? :manage, @post %>
-<%= link_to 'New Post', new_post_path %>
+<% if can? :create, Post %>
+  <%= link_to 'New Post', new_post_path %>
 <% end %>
