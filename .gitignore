@@ -16,3 +16,7 @@ rerun.txt
 pickle-email-*.html
 .DS_Store
 *.swp
+
+# emacs files for colwem
+\#*
+.#*
